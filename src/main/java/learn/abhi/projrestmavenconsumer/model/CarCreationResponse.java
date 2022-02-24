@@ -1,19 +1,20 @@
 package learn.abhi.projrestmavenconsumer.model;
 
-
 import learn.abhi.projrestmavenconsumer.enums.CarBrand;
 import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
-@Getter
 @AllArgsConstructor
-@EqualsAndHashCode
-public class CreateCarRequest {
+@NoArgsConstructor
+@Getter
+public class CarCreationResponse {
 
     String requestUuid;
+
+    String responseUuid;
 
     String name;
 
@@ -21,8 +22,7 @@ public class CreateCarRequest {
 
     int seats;
 
-    LocalDateTime requestedTime;
-
+    LocalDateTime creationTime;
 
 
 }

@@ -1,5 +1,6 @@
 package learn.abhi.projrestmavenconsumer.controller;
 
+import learn.abhi.projrestmavenconsumer.model.CarCreationResponse;
 import learn.abhi.projrestmavenconsumer.model.CreateCarRequest;
 import learn.abhi.projrestmavenconsumer.service.CarsService;
 import lombok.AllArgsConstructor;
@@ -21,9 +22,9 @@ public class CarsServiceController {
     @PostMapping(value = "/cars-service", produces = APPLICATION_JSON_VALUE, consumes = APPLICATION_JSON_VALUE)
     //todo validation of object
     @ResponseBody
-    public ResponseEntity<CreateCarRequest> createCar(@RequestHeader(name = "Accept", defaultValue = "application/json") String accept,
-                                                      @RequestBody @Validated CreateCarRequest createCarRequest) {
-        CreateCarRequest response = carsService.addCar(createCarRequest);
+    public ResponseEntity<CarCreationResponse> createCar(@RequestHeader(name = "Accept", defaultValue = "application/json") String accept,
+                                                         @RequestBody @Validated CreateCarRequest createCarRequest) {
+        CarCreationResponse response = carsService.addCar(createCarRequest);
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         return new ResponseEntity<>(response, headers, HttpStatus.CREATED);
