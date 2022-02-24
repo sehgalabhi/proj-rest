@@ -10,11 +10,11 @@ import lombok.Getter;
 @EqualsAndHashCode
 public class CreateCarRequest {
 
-    String name;
+    private String name;
 
-    CarBrand carBrand;
+    private CarBrand carBrand;
 
-    int seats;
+    private int seats;
 
     public enum CarBrand {
 
