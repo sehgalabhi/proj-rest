@@ -9,14 +9,22 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>learn.abhi</groupId>
-	<artifactId>proj-rest-maven</artifactId>
+	<artifactId>proj-rest</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>proj-rest-maven</name>
 	<description>Self project rest api</description>
 	<properties>
 		<java.version>11</java.version>
+		<spring-cloud-contract.version>3.1.1</spring-cloud-contract.version>
+		<spring-cloud.version>2021.0.1</spring-cloud.version>
 	</properties>
 	<dependencies>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -32,13 +40,65 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-contract-verifier</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>rest-assured</artifactId>
+			<version>3.0.2</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>spring-mock-mvc</artifactId>
+			<version>3.0.2</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-contract-maven-plugin</artifactId>
+				<version>${spring-cloud-contract.version}</version>
+				<extensions>true</extensions>
+				<dependencies>
+
+					<dependency>
+						<groupId>io.rest-assured</groupId>
+						<artifactId>rest-assured</artifactId>
+						<version>3.0.2</version>
+						<scope>compile</scope>
+					</dependency>
+					<dependency>
+					<groupId>io.rest-assured</groupId>
+					<artifactId>spring-mock-mvc</artifactId>
+					<version>3.0.2</version>
+					<scope>compile</scope>
+					</dependency>
+				</dependencies>
 			</plugin>
 		</plugins>
 	</build>
