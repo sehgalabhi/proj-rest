@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>learn.abhi</groupId>
-	<artifactId>proj-rest</artifactId>
+	<artifactId>proj-rest-maven-provider</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>proj-rest-maven</name>
 	<description>Self project rest api</description>

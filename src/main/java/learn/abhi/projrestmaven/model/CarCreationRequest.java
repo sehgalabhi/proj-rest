@@ -1,11 +1,18 @@
 package learn.abhi.projrestmaven.model;
 
+import learn.abhi.projrestmaven.enums.CarBrand;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.time.LocalDateTime;
 
 @AllArgsConstructor
 @NoArgsConstructor
-public class CarRequest {
+@Getter
+public class CarCreationRequest {
+
+    String requestUuid;
 
     String name;
 
@@ -13,10 +20,7 @@ public class CarRequest {
 
     int seats;
 
-    public enum CarBrand {
+    LocalDateTime requestedTime;
 
-        HYUNDAI,
-        VOLKSWAGEN
 
-    }
 }

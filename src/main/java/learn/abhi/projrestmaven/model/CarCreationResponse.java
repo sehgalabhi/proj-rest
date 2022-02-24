@@ -2,18 +2,18 @@ package learn.abhi.projrestmaven.model;
 
 import learn.abhi.projrestmaven.enums.CarBrand;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
 import java.time.LocalDateTime;
 
-@Entity
 @AllArgsConstructor
-public class Car {
+@Getter
+public class CarCreationResponse {
 
-    //todo add generation
-    @Id
-    private long id;
+    String requestUuid;
+
+    String responseUuid;
 
     String name;
 
@@ -21,11 +21,7 @@ public class Car {
 
     int seats;
 
-    String requestUuid;
-
-    String responseUuid;
-
-
     LocalDateTime creationTime;
+
 
 }

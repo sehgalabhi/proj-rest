@@ -1,11 +1,12 @@
 package learn.abhi.projrestmaven.controller;
 
-import learn.abhi.projrestmaven.model.Car;
-import learn.abhi.projrestmaven.model.CarRequest;
+import learn.abhi.projrestmaven.model.CarCreationRequest;
+import learn.abhi.projrestmaven.model.CarCreationResponse;
 import learn.abhi.projrestmaven.service.CarService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -17,10 +18,10 @@ public class CarController {
 
     @PostMapping(produces = "application/json", consumes = "application/json")
     @ResponseBody
-    public ResponseEntity<Car> createCars(@RequestBody CarRequest carRequest){
-        final Car car1 = carService.createCar(carRequest);
-
-        return new ResponseEntity<>(car1, HttpStatus.CREATED);
+    //todo add validation
+    public ResponseEntity<CarCreationResponse> createCars(@Validated @RequestBody CarCreationRequest carCreationRequest){
+        final CarCreationResponse response = carService.createCar(carCreationRequest);
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
 
     }
 
