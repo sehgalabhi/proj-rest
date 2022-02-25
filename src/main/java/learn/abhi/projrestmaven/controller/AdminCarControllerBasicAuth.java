@@ -1,5 +1,6 @@
 package learn.abhi.projrestmaven.controller;
 
+import learn.abhi.projrestmaven.model.Car;
 import learn.abhi.projrestmaven.model.CarCreationRequest;
 import learn.abhi.projrestmaven.model.CarCreationResponse;
 import learn.abhi.projrestmaven.service.CarService;
@@ -9,10 +10,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @RestController
 @AllArgsConstructor
-@RequestMapping("cars")
-public class CarController {
+@RequestMapping("admin/basicAuthCars")
+public class AdminCarControllerBasicAuth {
 
     private final CarService carService;
 
@@ -22,6 +26,15 @@ public class CarController {
     public ResponseEntity<CarCreationResponse> createCars(@Validated @RequestBody CarCreationRequest carCreationRequest){
         final CarCreationResponse response = carService.createCar(carCreationRequest);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
+
+    }
+
+    @GetMapping(produces = "application/json")
+    @ResponseBody
+    //todo complete
+    public ResponseEntity<List<Car>> getCars(){
+
+        return new ResponseEntity<>(new ArrayList<>(), HttpStatus.OK);
 
     }
 
