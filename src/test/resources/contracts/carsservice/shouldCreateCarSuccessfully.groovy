@@ -4,7 +4,7 @@ Contract.make {
 
     request {
         method 'POST'
-        url '/basicAuthCars'
+        url '/basic/cars'
         body(
                 // on consumer stubs, will be any UUId but for provider verification value as below
                 "requestUuid": anyUuid(),

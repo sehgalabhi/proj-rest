@@ -1,7 +1,7 @@
 package learn.abhi.projrestmaven.contracts;
 
 import io.restassured.module.mockmvc.RestAssuredMockMvc;
-import learn.abhi.projrestmaven.controller.CarControllerBasicAuth;
+import learn.abhi.projrestmaven.controller.basic.BasicCarController;
 import learn.abhi.projrestmaven.model.CarCreationRequest;
 import learn.abhi.projrestmaven.model.CarCreationResponse;
 import learn.abhi.projrestmaven.service.CarService;
@@ -19,7 +19,7 @@ import java.time.LocalDateTime;
 
 import static learn.abhi.projrestmaven.enums.CarBrand.HYUNDAI;
 
-@WebMvcTest(value = CarControllerBasicAuth.class, excludeAutoConfiguration = SecurityAutoConfiguration.class)
+@WebMvcTest(value = BasicCarController.class, excludeAutoConfiguration = SecurityAutoConfiguration.class)
 public class BaseContractTest {
 
     @Autowired
@@ -41,7 +41,7 @@ public class BaseContractTest {
                 });
 
         RestAssuredMockMvc.mockMvc(mockMvc);
-//        RestAssuredMockMvc.standaloneSetup(new CarControllerBasicAuth(carServiceMock));
+//        RestAssuredMockMvc.standaloneSetup(new BasicCarController(carServiceMock));
     }
 
 

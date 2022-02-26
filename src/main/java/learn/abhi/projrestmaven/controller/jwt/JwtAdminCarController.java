@@ -1,10 +1,11 @@
-package learn.abhi.projrestmaven.controller;
+package learn.abhi.projrestmaven.controller.jwt;
 
 import learn.abhi.projrestmaven.model.Car;
 import learn.abhi.projrestmaven.model.CarCreationRequest;
 import learn.abhi.projrestmaven.model.CarCreationResponse;
 import learn.abhi.projrestmaven.service.CarService;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -15,8 +16,9 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("admin/basicAuthCars")
-public class AdminCarControllerBasicAuth {
+@RequestMapping("/admin/jwt/cars")
+@Slf4j
+public class JwtAdminCarController {
 
     private final CarService carService;
 
@@ -24,6 +26,8 @@ public class AdminCarControllerBasicAuth {
     @ResponseBody
     //todo add validation
     public ResponseEntity<CarCreationResponse> createCars(@Validated @RequestBody CarCreationRequest carCreationRequest){
+        log.info("Called post admin cars for JwtController");
+
         final CarCreationResponse response = carService.createCar(carCreationRequest);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
 
@@ -33,6 +37,7 @@ public class AdminCarControllerBasicAuth {
     @ResponseBody
     //todo complete
     public ResponseEntity<List<Car>> getCars(){
+        log.info("Called get admin cars for JwtController");
 
         return new ResponseEntity<>(new ArrayList<>(), HttpStatus.OK);
 
